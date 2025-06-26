@@ -1,7 +1,7 @@
 // Select the cart list
 const cartItems = document.getElementById('cart-items');
 
-// Select cart total
+// Cart total
 const cartTotal = document.getElementById('cart-total')
 
 // Get all the add to cart buttons
@@ -21,6 +21,7 @@ addButtons.forEach(button => {
     });
 });
 
+// Add item to cart
 function addToCart(name, price) {
     const existingItem = cart.find(item => item.name == name);
 
@@ -33,11 +34,18 @@ function addToCart(name, price) {
     renderCart();
 }
 
+// Update the cart
 function renderCart() {
     cartItems.innerHTML = '';
+    let total = 0;
+
     cart.forEach(item => {
         const li = document.createElement('li');
         li.textContent = `${item.name} — $${item.price.toFixed(2)} x ${item.quantity}`;
         cartItems.appendChild(li);
+
+        total += item.price * item.quantity;
     });
+
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
 }
