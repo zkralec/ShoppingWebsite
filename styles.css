@@ -29,8 +29,7 @@ img {
 }
 
 .product {
-    background-color: whitesmoke;
-    border: 1px solid black;
+    background-color: rgb(230, 244, 255);
     border-radius: 14px;
     padding: 20px;
     text-align: center;
@@ -67,11 +66,13 @@ img {
     padding: 4px;
     border-radius: 6px;
     transition-duration: 0.05s;
+    background-color: white;
+    color: black;
 }
 
 .button button:hover {
-    background-color: lightblue;
-    color: white;
+    transition-duration: 0.1s;
+    background-color: rgb(241, 241, 241);
 }
 
 .button button:active {
@@ -79,8 +80,7 @@ img {
 }
 
 .cart {
-    background-color: whitesmoke;
-    border: 1px solid black;
+    background-color: rgb(230, 244, 255);
     border-radius: 14px;
     padding: 20px;
     margin-inline: 20px;
