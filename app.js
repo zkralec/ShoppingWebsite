@@ -7,6 +7,12 @@ const cartTotal = document.getElementById('cart-total')
 // Get all the add to cart buttons
 const addButtons = document.querySelectorAll('.button button');
 
+// Get the search bar item
+const searchBar = document.getElementById('search-bar');
+
+// Get products
+const products = document.querySelectorAll('.product');
+
 let cart = []
 
 if (localStorage.getItem('cart')) {
@@ -75,3 +81,17 @@ function renderCart() {
     // Saving after removing item
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+// Wait for search bar changes
+searchBar.addEventListener('input', () => {
+    products.forEach(product => {
+        const name = product.querySelector('h2').textContent;
+        const searchValue = searchBar.value.toLowerCase();
+
+        if (name.toLowerCase().includes(searchBar.value.toLowerCase())) {
+            product.style.display = '';
+        } else {
+            product.style.display = 'None';
+        }
+    });
+});
