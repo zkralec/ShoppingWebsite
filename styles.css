@@ -1,17 +1,11 @@
 * {
     margin: 0px;
     padding: 0;
-    background-size: contain;
     box-sizing: border-box;
-}
-
-body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
 }
 
 h1 {
-    background-color: white;
     padding: 20px;
 }
 
@@ -21,11 +15,10 @@ img {
 }
 
 .product-list {
-    background-color: white;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .product {

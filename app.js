@@ -14,6 +14,7 @@ if (localStorage.getItem('cart')) {
     renderCart();
 }
 
+// Logic for each product button
 addButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const product = e.target.closest('.product');
