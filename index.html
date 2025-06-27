@@ -10,11 +10,21 @@
             <div class="header-bar">
                 <h1>Generic Shopping Site</h1>
                 <input type="text" id="search-bar" placeholder="Search for a product...">
+                <div class="cart-icon">
+                    🛒 <span id="cart-count">0</span>
+                </div>
             </div>
-            <div class="cart">
-                <h3>Cart</h3>
-                <ul id="cart-items"></ul>
-                <p id="cart-total">Total: $0.00</p>
+            <div class="cart-container">
+                <div class="cart-details hidden">
+                    <h2>Cart</h2>
+                    <ul id="cart-items"></ul>
+                    <div class="cart-summary">
+                        <p id="cart-subtotal">Subtotal: $0.00</p>
+                        <p id="cart-tax">Estimated Tax: $0.00</p>
+                        <p id="cart-shipping">Estimated Shipping: $0.00</p>
+                        <p id="cart-total">Total: $0.00</p>
+                    </div>
+                </div>
             </div>
             <section class="product-list">
                 <div class="product">

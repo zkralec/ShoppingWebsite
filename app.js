@@ -13,6 +13,13 @@ const searchBar = document.getElementById('search-bar');
 // Get products
 const products = document.querySelectorAll('.product');
 
+// Cart details
+const cartIcon = document.querySelector('.cart-icon');
+const cartDetails = document.querySelector('.cart-details');
+const subtotal = document.getElementById('cart-subtotal')
+const cartTax = document.getElementById('cart-tax');
+const cartShipping = document.getElementById('cart-shipping');
+
 let cart = []
 
 if (localStorage.getItem('cart')) {
@@ -75,8 +82,40 @@ function renderCart() {
         total += item.price * item.quantity;
     });
 
-    // Setting total amount
-    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+    if (total == 0) {
+        const li = document.createElement('li');
+        
+        li.textContent = 'Cart is empty. Add items to display here!';
+        li.style.backgroundColor = 'white';
+        li.style.marginTop = '-5px'
+        li.style.marginLeft = '0px';
+        li.style.listStyle = 'none';
+        li.style.fontStyle = 'italic';
+
+        cartItems.appendChild(li);
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        subtotal.textContent = '';
+        cartTax.textContent = '';
+        cartShipping.textContent = '';
+        cartTotal.textContent = '';
+    } else {
+        const tax = total * 0.07;
+        const shipping = total > 50 ? 0 : 5;
+        const finalTotal = total + tax + shipping;
+
+        // Get number of items in cart
+        document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        // Setting subtotal
+        subtotal.textContent = `Subtotal: $${total.toFixed(2)}`;
+
+        // Set tax
+        cartTax.textContent = `Estimated Tax: $${tax.toFixed(2)}`;
+        cartShipping.textContent = `Estimated Shipping: $${shipping.toFixed(2)}`;
+
+        // Setting total amount
+        cartTotal.textContent = `Total: $${finalTotal.toFixed(2)}`;
+    }
 
     // Saving after removing item
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -91,7 +130,12 @@ searchBar.addEventListener('input', () => {
         if (name.toLowerCase().includes(searchBar.value.toLowerCase())) {
             product.style.display = '';
         } else {
-            product.style.display = 'None';
+            product.style.display = 'none';
         }
     });
+});
+
+// Wait for user click on cart
+cartIcon.addEventListener('click', () => {
+    cartDetails.classList.toggle('show');
 });

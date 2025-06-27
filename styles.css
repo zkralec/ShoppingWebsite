@@ -18,11 +18,12 @@ img {
     padding: 20px;
     display: grid;
     gap: 20px; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
 }
 
 .product {
     background-color: rgb(230, 244, 255);
+    max-width: 300px;
     border-radius: 14px;
     padding: 20px;
     text-align: center;
@@ -61,6 +62,7 @@ img {
     transition-duration: 0.05s;
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 .button button:hover {
@@ -72,21 +74,70 @@ img {
     transform: translateY(2px);
 }
 
-.cart {
-    background-color: rgb(230, 244, 255);
-    border-radius: 14px;
-    padding: 20px;
+.cart-icon {
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+}
+
+#cart-count {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: crimson;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: clamp(6px, 8px, 10px); 
+}
+
+.cart-details {
     margin-inline: 20px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-block: 5px;
+    display: none;
 }
 
-.cart h3 {
-    text-decoration: underline;
-    padding-bottom: 5px;
+.cart-details h2 {
+    padding-block: 10px;
 }
 
-.cart ul {
-    padding-left: 20px;
-    padding-bottom: 5px;
+.cart-details li {
+    margin-left: 15px;
+    background-color: rgb(230, 244, 255);
+    padding: 6px 10px;
+    border-radius: 6px; 
+    margin-bottom: 4px;
+    max-width: fit-content;
+}
+
+.cart-details p {
+    margin-block: 4px;
+    font-weight: bold;
+}
+
+.cart-details.show {
+    display: block;
+}
+
+.cart-summary {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.cart-summary.hidden {
+  opacity: 0;
 }
 
 .remove-button {
@@ -102,14 +153,16 @@ img {
 }
 
 .header-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #search-bar {
-  flex-shrink: 0;
-  padding: 6px 10px;
-  font-size: 16px;
-  width: 1000px
+    flex-shrink: 0;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 16px;
+    width: 990px;
 }
