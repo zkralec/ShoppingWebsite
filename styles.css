@@ -132,14 +132,6 @@ img {
     display: block;
 }
 
-.cart-summary {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-.cart-summary.hidden {
-  opacity: 0;
-}
-
 .remove-button {
     margin-left: 8px;
     font-size: 14px;
