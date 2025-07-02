@@ -15,6 +15,7 @@ const products = document.querySelectorAll('.product');
 
 // Cart details
 const cartIcon = document.querySelector('.cart-icon');
+const cartPanel = document.querySelector('.cart-panel');
 const cartDetails = document.querySelector('.cart-details');
 const subtotal = document.getElementById('cart-subtotal')
 const cartTax = document.getElementById('cart-tax');
@@ -103,9 +104,6 @@ function renderCart() {
         const shipping = total > 50 ? 0 : 5;
         const finalTotal = total + tax + shipping;
 
-        // Get number of items in cart
-        document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-
         // Setting subtotal
         subtotal.textContent = `Subtotal: $${total.toFixed(2)}`;
 
@@ -116,6 +114,10 @@ function renderCart() {
         // Setting total amount
         cartTotal.textContent = `Total: $${finalTotal.toFixed(2)}`;
     }
+
+    // Updating item total
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cart-count').textContent = itemCount;
 
     // Saving after removing item
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -137,5 +139,17 @@ searchBar.addEventListener('input', () => {
 
 // Wait for user click on cart
 cartIcon.addEventListener('click', () => {
-    cartDetails.classList.toggle('show');
+  cartPanel.classList.toggle('show');
+});
+
+// Do not remove panel when clicked inside
+cartPanel.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+// Remove cart panel when clicked outside
+document.addEventListener('click', (e) => {
+  if (!cartPanel.contains(e.target) && !cartIcon.contains(e.target)) {
+    cartPanel.classList.remove('show');
+  }
 });
