@@ -20,6 +20,7 @@ const cartDetails = document.querySelector('.cart-details');
 const subtotal = document.getElementById('cart-subtotal')
 const cartTax = document.getElementById('cart-tax');
 const cartShipping = document.getElementById('cart-shipping');
+const clearCartButton = document.getElementById('clear-cart');
 
 let cart = []
 
@@ -89,7 +90,7 @@ function renderCart() {
         li.textContent = 'Cart is empty. Add items to display here!';
         li.style.backgroundColor = 'white';
         li.style.marginTop = '-5px'
-        li.style.marginLeft = '0px';
+        li.style.marginLeft = '-5px';
         li.style.listStyle = 'none';
         li.style.fontStyle = 'italic';
 
@@ -99,10 +100,14 @@ function renderCart() {
         cartTax.textContent = '';
         cartShipping.textContent = '';
         cartTotal.textContent = '';
+        clearCartButton.classList.add('hidden');
     } else {
         const tax = total * 0.07;
         const shipping = total > 50 ? 0 : 5;
         const finalTotal = total + tax + shipping;
+
+        // Show clear cart button
+        clearCartButton.classList.remove('hidden');
 
         // Setting subtotal
         subtotal.textContent = `Subtotal: $${total.toFixed(2)}`;
@@ -139,17 +144,23 @@ searchBar.addEventListener('input', () => {
 
 // Wait for user click on cart
 cartIcon.addEventListener('click', () => {
-  cartPanel.classList.toggle('show');
+    cartPanel.classList.toggle('show');
 });
 
 // Do not remove panel when clicked inside
 cartPanel.addEventListener('click', (e) => {
-  e.stopPropagation();
+    e.stopPropagation();
 });
 
 // Remove cart panel when clicked outside
 document.addEventListener('click', (e) => {
-  if (!cartPanel.contains(e.target) && !cartIcon.contains(e.target)) {
-    cartPanel.classList.remove('show');
+    if (!cartPanel.contains(e.target) && !cartIcon.contains(e.target)) {
+        cartPanel.classList.remove('show');
   }
+});
+
+// Clear cart when button is pressed
+document.getElementById('clear-cart').addEventListener('click', () => {
+    cart = [];
+    renderCart();
 });

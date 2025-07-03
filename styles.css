@@ -136,7 +136,8 @@ img {
 }
 
 .cart-panel p {
-    margin-block: 4px;
+    margin-left: 5px;
+    padding-block: 5px;
     font-weight: bold;
 }
 
@@ -150,6 +151,25 @@ img {
 .remove-button:hover {
     transition-duration: 0.05s;
     transform: translateY(-2px);
+}
+
+#clear-cart {
+    margin-left: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+#clear-cart:hover {
+    transition-duration: 0.25s;
+    background-color: rgb(251, 24, 24);
+    color: white;
+}
+
+#clear-cart.hidden {
+  display: none;    
 }
 
 .header-bar {
