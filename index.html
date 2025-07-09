@@ -2,18 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Generic Shopping Site</title>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <main>
-            <div class="header-bar">
-                <h1>Generic Shopping Site</h1>
-                <input type="text" id="search-bar" placeholder="Search for a product...">
-                <div class="cart-icon">
-                    🛒 <span id="cart-count">0</span>
+            <header>
+                <div class="header-bar">
+                    <h1>Generic Shopping Site</h1>
+                    <div class="search-cart-wrapper">
+                        <input type="text" id="search-bar" placeholder="Search for a product...">
+                        <div class="cart-icon">
+                            🛒 <span id="cart-count">0</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </header>
             <div class="cart-container">
                 <div class="cart-panel">
                     <h3>Your Cart</h3>
