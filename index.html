@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,11 +23,11 @@
                 <div class="cart-panel">
                     <h3>Your Cart</h3>
                     <ul id="cart-items"></ul>
+                    <button id="clear-cart">Clear Cart</button>
                     <p id="cart-subtotal"></p>
                     <p id="cart-tax"></p>
                     <p id="cart-shipping"></p>
                     <p id="cart-total"></p>
-                    <button id="clear-cart">Clear Cart</button>
                 </div>
             </div>
             <section class="product-list">
@@ -36,7 +36,7 @@
                     <img src="/images/orange-juice.png">
                     <p>Description: Yummy orange juice.</p>
                     <div class="button">
-                        <button>$4.25 🛒</button>
+                        <button data-price="4.25">Add to cart - $4.25 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -44,7 +44,7 @@
                     <img src="/images/milk.png">
                     <p>Description: Tasty and fresh milk.</p>
                     <div class="button">
-                        <button>$4.99 🛒</button>
+                        <button data-price="4.99">Add to cart - $4.99 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -52,7 +52,7 @@
                     <img src="/images/rice.png">
                     <p>Description: Fluffy and healthy rice.</p>
                     <div class="button">
-                        <button>$2.00 🛒</button>
+                        <button data-price="2.00">Add to cart - $2.00 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -60,7 +60,7 @@
                     <img src="/images/potato-chips.png">
                     <p>Description: Crisp, freshly fried potato chips.</p>
                     <div class="button">
-                        <button>$2.50 🛒</button>
+                        <button data-price="2.50">Add to cart - $2.50 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -68,7 +68,7 @@
                     <img src="/images/apple.png">
                     <p>Description: Healthy and sweet red apple.</p>
                     <div class="button">
-                        <button>$0.99 🛒</button>
+                        <button data-price="0.99">Add to cart - $0.99 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -76,7 +76,7 @@
                     <img src="/images/cereal.png">
                     <p>Description: Heart healthy and very filling cereal.</p>
                     <div class="button">
-                        <button>$3.49 🛒</button>
+                        <button data-price="3.49">Add to cart - $3.49 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -84,7 +84,7 @@
                     <img src="/images/peanuts.png">
                     <p>Description: Salty peanuts, ballpark style.</p>
                     <div class="button">
-                        <button>$2.19 🛒</button>
+                        <button data-price="2.19">Add to cart - $2.19 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -92,7 +92,7 @@
                     <img src="/images/ice-cream.png">
                     <p>Description: Sweet and cold ice cream.</p>
                     <div class="button">
-                        <button>$3.99 🛒</button>
+                        <button data-price="3.99">Add to cart - $3.99 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -100,7 +100,7 @@
                     <img src="/images/chicken.png">
                     <p>Description: Very lean, and protein packed chicken breasts.</p>
                     <div class="button">
-                        <button>$8.95 🛒</button>
+                        <button data-price="8.95">Add to cart - $8.95 🛒</button>
                     </div>
                 </div>
                 <div class="product">
@@ -108,14 +108,14 @@
                     <img src="/images/gum.png">
                     <p>Description: Minty fresh chewing gum to help bad breath.</p>
                     <div class="button">
-                        <button>$0.98 🛒</button>
+                        <button data-price="0.98">Add to cart - $0.98 🛒</button>
                     </div>
                 </div>
             </section>
         </main>
+        <footer>
+            <p>© 2025 Generic Shopping Site. All rights reserved.</p>
+        </footer>
         <script src="app.js"></script>
     </body>
-    <footer>
-        <p style="text-align:center; padding: 20px;">© 2025 Generic Shopping Site. All rights reserved.</p>
-    </footer>
 </html>

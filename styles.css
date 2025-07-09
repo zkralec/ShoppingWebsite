@@ -1,27 +1,34 @@
 *:root {
-  --primary: #007BFF;
-  --light-blue: rgb(230, 244, 255);
-  --border-radius: 14px;
-  --font: 'Arial', sans-serif;
+    --primary: #007BFF;
+    --light-blue: rgb(230, 244, 255);
+    --border-radius: 14px;
+    --font: 'Arial', sans-serif;
 }
 
 body {
-  font-family: var(--font);
-  background-color: #f8f8f8;
+    font-family: var(--font);
+    background-color: #f8f8f8;
 }
 
-.product {
-  background-color: var(--light-blue);
-  border-radius: var(--border-radius);
-}
-
-h1 {
-    padding: 20px;
+header {
+    position: sticky;
+    top: 0;
+    background-color: #f8f8f8;
+    z-index: 999;
 }
 
 img {
     color: inherit;
     text-decoration: none;
+}
+
+.product {
+    background-color: var(--light-blue);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .product-list {
@@ -42,8 +49,9 @@ img {
 
 .button button {
     margin-bottom: 20px;
-    padding: 4px;
-    border-radius: 6px;
+    padding: 8px;
+    padding-inline: 10px;
+    border-radius: 20px;
     transition-duration: 0.05s;
     background-color: white;
     color: black;
@@ -61,6 +69,7 @@ img {
 
 .cart-icon {
     margin-left: 20px;
+    margin-bottom: 3px;
     position: relative;
     cursor: pointer;
     font-size: 24px;
@@ -113,6 +122,7 @@ img {
 
 .cart-panel li {
     background-color: rgb(230, 244, 255);
+    margin-left: -30px;
     padding: 6px 10px;
     border-radius: 6px;
     margin-bottom: 6px;
@@ -122,11 +132,12 @@ img {
 
 .cart-panel p {
     margin-left: 5px;
-    padding-block: 5px;
+    padding-block: -8px;
     font-weight: bold;
 }
 
 .remove-button {
+    background-color: var(--light-blue);
     margin-left: 8px;
     font-size: 14px;
     border: none;
@@ -139,12 +150,11 @@ img {
 }
 
 #clear-cart {
-    margin-left: 5px;
+    margin-left: 10px;
     padding: 6px 12px;
     border-radius: 6px;
     background-color: white;
     cursor: pointer;
-    margin-top: 6px;
 }
 
 #clear-cart:hover {
@@ -154,7 +164,7 @@ img {
 }
 
 #clear-cart.hidden {
-  display: none;    
+    display: none;    
 }
 
 .header-bar {
@@ -201,7 +211,7 @@ img {
     }
 
     .cart-icon {
-        margin-left: 10px;
+        margin-inline: 20px;
         flex-shrink: 0;
     }
 
@@ -222,7 +232,9 @@ img {
 }
 
 footer p {
-    margin-top: 30px;
+    margin-block: 40px;
     font-size: 15px;
     color: gray;
+    padding: 30px 20px;
+    text-align: center;
 }

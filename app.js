@@ -16,7 +16,6 @@ const products = document.querySelectorAll('.product');
 // Cart details
 const cartIcon = document.querySelector('.cart-icon');
 const cartPanel = document.querySelector('.cart-panel');
-const cartDetails = document.querySelector('.cart-details');
 const subtotal = document.getElementById('cart-subtotal')
 const cartTax = document.getElementById('cart-tax');
 const cartShipping = document.getElementById('cart-shipping');
@@ -34,23 +33,27 @@ addButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const product = e.target.closest('.product');
         const name = product.querySelector('h2').textContent;
+        const price = parseFloat(button.getAttribute('data-price'));
 
-        const priceText = button.textContent;
-        const price = parseFloat(priceText.replace('$',''));
-
-        addToCart(name, price)
+        addToCart(name, price, button);
     });
 });
 
 // Add item to cart
-function addToCart(name, price) {
-    const existingItem = cart.find(item => item.name == name);
+function addToCart(name, price, button) {
+    const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({name, price, quantity: 1});
+        cart.push({ name, price, quantity: 1 });
     }
+
+    // Feedback animation
+    button.textContent = '✓ Added!';
+    setTimeout(() => {
+        button.textContent = `Add to cart - $${price.toFixed(2)} 🛒`;
+    }, 750);
 
     renderCart();
 }
@@ -69,6 +72,7 @@ function renderCart() {
     // Creating remove button for each item
     cart.forEach((item, index) => {
         const li = document.createElement('li');
+
         li.textContent = `${item.name} — $${item.price.toFixed(2)} x ${item.quantity}`;
 
         const removeButton = document.createElement('button');
@@ -90,12 +94,12 @@ function renderCart() {
         li.textContent = 'Cart is empty. Add items to display here!';
         li.style.backgroundColor = 'white';
         li.style.marginTop = '-5px'
-        li.style.marginLeft = '-5px';
+        li.style.marginLeft = '-40px';
         li.style.listStyle = 'none';
         li.style.fontStyle = 'italic';
 
         cartItems.appendChild(li);
-        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+
         subtotal.textContent = '';
         cartTax.textContent = '';
         cartShipping.textContent = '';
