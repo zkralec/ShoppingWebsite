@@ -238,3 +238,9 @@ img {
         max-width: 100%;
     }
 }
+
+footer p {
+    margin-top: 30px;
+    font-size: 15px;
+    color: gray;
+}
