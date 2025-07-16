@@ -89,8 +89,9 @@ function renderCart() {
     });
 
     if (total == 0) {
+        // Adding styling to empty cart
         const li = document.createElement('li');
-        
+
         li.textContent = 'Cart is empty. Add items to display here!';
         li.style.backgroundColor = 'white';
         li.style.marginTop = '-5px'
@@ -100,12 +101,14 @@ function renderCart() {
 
         cartItems.appendChild(li);
 
+        // Removing unecessary items
         subtotal.textContent = '';
         cartTax.textContent = '';
         cartShipping.textContent = '';
         cartTotal.textContent = '';
         clearCartButton.classList.add('hidden');
     } else {
+        // Calculate tax, shipping, and total
         const tax = total * 0.07;
         const shipping = total > 50 ? 0 : 5;
         const finalTotal = total + tax + shipping;
