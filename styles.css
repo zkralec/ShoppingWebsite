@@ -23,43 +23,68 @@ img {
 }
 
 .product {
+    display: grid;
+    grid-template-areas:
+        "title   title"
+        "image   description"
+        "image   button";
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px 16px;
+    padding: 16px;
     background-color: var(--light-blue);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 800px;
+    box-sizing: border-box;
 }
 
 .product-list {
-    padding: 20px;
     display: grid;
-    gap: 20px; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product h2 {
+    grid-area: title;
+    margin: 0;
+    font-size: 1.2rem;
+    align-self: start;
 }
 
 .product img {
-    padding: 10px;
-    display: block;
-    max-width: 100%;
-    max-height: auto;
-    margin: 0 auto;
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product p {
+    grid-area: description;
+    margin: 0;
+    align-self: start;
+    font-size: 0.95rem;
+}
+
+.product .button {
+    grid-area: button;
+    justify-self: end;
+    align-self: end;
 }
 
 .button button {
-    margin-bottom: 20px;
-    padding: 8px;
-    padding-inline: 10px;
+    padding: 8px 12px;
     border-radius: 20px;
-    transition-duration: 0.05s;
     background-color: white;
-    color: black;
+    border: 1px solid #ccc;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .button button:hover {
-    transition-duration: 0.1s;
     background-color: rgb(241, 241, 241);
 }
 
