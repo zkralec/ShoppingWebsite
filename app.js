@@ -172,7 +172,7 @@ const defaultProductOrder = Array.from(document.querySelectorAll('.product'));
 
 sortDropdown.addEventListener('change', () => {
     let sorted;
-
+    
     const productsArray = Array.from(document.querySelectorAll('.product'));
 
     switch (sortDropdown.value) {
