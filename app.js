@@ -21,6 +21,10 @@ const cartTax = document.getElementById('cart-tax');
 const cartShipping = document.getElementById('cart-shipping');
 const clearCartButton = document.getElementById('clear-cart');
 
+// Sort dropdown items
+const sortDropdown = document.getElementById('foods');
+const productList = document.querySelector('.product-list');
+
 let cart = []
 
 if (localStorage.getItem('cart')) {
@@ -113,9 +117,6 @@ function renderCart() {
         const shipping = total > 50 ? 0 : 5;
         const finalTotal = total + tax + shipping;
 
-        // Show clear cart button
-        clearCartButton.classList.remove('hidden');
-
         // Setting subtotal
         subtotal.textContent = `Subtotal: $${total.toFixed(2)}`;
 
@@ -166,8 +167,41 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Clear cart when button is pressed
-document.getElementById('clear-cart').addEventListener('click', () => {
-    cart = [];
-    renderCart();
+// Dropdown logic to sort products
+const defaultProductOrder = Array.from(document.querySelectorAll('.product'));
+
+sortDropdown.addEventListener('change', () => {
+    let sorted;
+
+    const productsArray = Array.from(document.querySelectorAll('.product'));
+
+    switch (sortDropdown.value) {
+        case 'low-to-high':
+            sorted = [...productsArray].sort((a, b) =>
+                parseFloat(a.querySelector('button').dataset.price) - parseFloat(b.querySelector('button').dataset.price)
+            );
+            break;
+        case 'high-to-low':
+            sorted = [...productsArray].sort((a, b) =>
+                parseFloat(b.querySelector('button').dataset.price) - parseFloat(a.querySelector('button').dataset.price)
+            );
+            break;
+        case 'a-to-z':
+            sorted = [...productsArray].sort((a, b) =>
+                a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent)
+            );
+            break;
+        case 'z-to-a':
+            sorted = [...productsArray].sort((a, b) =>
+                b.querySelector('h2').textContent.localeCompare(a.querySelector('h2').textContent)
+            );
+            break;
+        default:
+            sorted = defaultProductOrder;
+            break;
+    }
+
+    // Clear and re-append
+    productList.innerHTML = '';
+    sorted.forEach(product => productList.appendChild(product));
 });

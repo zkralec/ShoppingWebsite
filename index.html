@@ -23,7 +23,6 @@
                 <div class="cart-panel">
                     <h3>Your Cart</h3>
                     <ul id="cart-items"></ul>
-                    <button id="clear-cart">Clear Cart</button>
                     <p id="cart-subtotal"></p>
                     <p id="cart-tax"></p>
                     <p id="cart-shipping"></p>
@@ -31,12 +30,15 @@
                 </div>
             </div>
             <div class="cart-product-spacer">
-                <select name="dropdown" id="foods">
-                    <option value="low-to-high">Price ↓ to ↑</option>
-                    <option value="high-to-high">Price ↑ to ↓</option>
-                    <option value="a-to-z">A to Z</option>
-                    <option value="z-to-a">Z to A</option>
-                </select>
+                <label for="foods" class="sort-label">Sort by:
+                    <select name="dropdown" id="foods">
+                        <option value="default">Featured</option>
+                        <option value="low-to-high">Price ↓ to ↑</option>
+                        <option value="high-to-low">Price ↑ to ↓</option>
+                        <option value="a-to-z">A to Z</option>
+                        <option value="z-to-a">Z to A</option>
+                    </select>
+                </label>
             </div>
             <section class="product-list">
                 <div class="product">
